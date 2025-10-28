@@ -1,0 +1,84 @@
+<!-- 首页 - 组队列表 -->
+<view class="page">
+  <!-- 顶部标语 -->
+  <view class="header">
+    <view class="slogan">{{slogan}}</view>
+  </view>
+
+  <!-- 类型筛选 -->
+  <scroll-view class="type-scroll" scroll-x="true">
+    <view class="type-list">
+      <view 
+        wx:for="{{teamTypes}}" 
+        wx:key="id"
+        class="type-item {{selectedType === item.id ? 'active' : ''}}"
+        data-type="{{item.id}}"
+        bindtap="onTypeSelect"
+      >
+        <text class="type-icon">{{item.icon}}</text>
+        <text class="type-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 组队列表 -->
+  <view class="team-list">
+    <view 
+      wx:for="{{teamList}}" 
+      wx:key="id"
+      class="team-card"
+      data-team="{{item}}"
+      bindtap="onTeamTap"
+    >
+      <!-- 卡片头部 -->
+      <view class="card-header">
+        <view class="type-badge" style="background-color: {{item.typeColor}}">
+          <text class="badge-icon">{{item.typeIcon}}</text>
+          <text class="badge-text">{{item.typeName}}</text>
+        </view>
+        <view class="create-time text-gray">{{item.createTime}}</view>
+      </view>
+
+      <!-- 标题 -->
+      <view class="card-title">{{item.title}}</view>
+
+      <!-- 描述 -->
+      <view class="card-desc text-ellipsis-2">{{item.description}}</view>
+
+      <!-- 标签 -->
+      <view class="card-tags">
+        <view wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag" class="tag-item">
+          {{tag}}
+        </view>
+      </view>
+
+      <!-- 底部信息 -->
+      <view class="card-footer">
+        <view class="footer-left">
+          <text class="creator text-gray">{{item.creator}}</text>
+        </view>
+        <view class="footer-right">
+          <text class="members">👥 {{item.members}}</text>
+          <text class="location">📍 {{item.location}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{teamList.length === 0}}" class="empty-state">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">暂无相关组队</text>
+    </view>
+  </view>
+
+  <!-- 浮动发布按钮 -->
+  <view class="float-btn" bindtap="onCreateTeam">
+    <text>✚</text>
+  </view>
+
+  <!-- 反馈按钮 -->
+  <view class="feedback-btn" bindtap="onFeedback">
+    <text>💬</text>
+  </view>
+</view>
+

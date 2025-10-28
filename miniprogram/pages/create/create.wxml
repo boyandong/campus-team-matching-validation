@@ -1,0 +1,83 @@
+<!-- 发布组队页 -->
+<view class="page">
+  
+  <view class="header">
+    <view class="header-title">发布组队信息</view>
+    <view class="header-desc">分享你的想法，找到志同道合的伙伴</view>
+  </view>
+
+  <view class="form-container">
+    
+    <!-- 组队标题 -->
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        <text>组队标题</text>
+      </view>
+      <input 
+        class="form-input"
+        placeholder="例如：寻找AI研究队友"
+        value="{{title}}"
+        bindinput="onTitleInput"
+        maxlength="50"
+      />
+      <view class="input-tip">{{title.length}}/50</view>
+    </view>
+
+    <!-- 组队类型 -->
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        <text>组队类型</text>
+      </view>
+      <picker 
+        mode="selector" 
+        range="{{teamTypes}}"
+        range-key="name"
+        value="{{selectedTypeIndex}}"
+        bindchange="onTypeChange"
+      >
+        <view class="picker-display">
+          <text class="type-icon">{{teamTypes[selectedTypeIndex].icon}}</text>
+          <text class="type-name">{{teamTypes[selectedTypeIndex].name}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 组队描述 -->
+    <view class="form-group">
+      <view class="form-label">
+        <text class="required">*</text>
+        <text>组队描述</text>
+      </view>
+      <textarea 
+        class="form-textarea"
+        placeholder="详细描述你的组队需求、目标、成员要求等..."
+        value="{{description}}"
+        bindinput="onDescInput"
+        maxlength="500"
+        auto-height
+      />
+      <view class="input-tip">{{description.length}}/500</view>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="tips-box">
+      <view class="tips-title">💡 温馨提示</view>
+      <view class="tips-content">
+        • 标题要简洁明了，突出重点\n
+        • 描述中说明具体需求和成员要求\n
+        • 留下联系方式方便其他同学联系你
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-btn" bindtap="onSubmit">
+      发布组队
+    </view>
+
+  </view>
+
+</view>
+

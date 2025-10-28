@@ -1,0 +1,83 @@
+<!-- 用户反馈页 -->
+<view class="page">
+  
+  <view class="header">
+    <view class="header-icon">💬</view>
+    <view class="header-title">期待您的反馈</view>
+    <view class="header-desc">告诉我们您对组队平台的想法</view>
+  </view>
+
+  <view class="content">
+    
+    <!-- 感谢语 -->
+    <view class="thanks-box">
+      <view class="thanks-title">🎉 感谢体验 CoCanvas 校园组队原型！</view>
+      <view class="thanks-text">
+        我们正在打造一个帮助大学生找到队友的平台。\n您的反馈将帮助我们更好地满足您的需求。
+      </view>
+    </view>
+
+    <!-- 反馈表单 -->
+    <view class="form-container">
+      
+      <view class="form-group">
+        <view class="form-label">
+          <text class="required">*</text>
+          <text>您对组队平台的期待是什么？</text>
+        </view>
+        <textarea 
+          class="form-textarea"
+          placeholder="例如：希望能快速找到靠谱的队友，看到队友的真实信息..."
+          value="{{expectation}}"
+          bindinput="onExpectationInput"
+          maxlength="500"
+          auto-height
+        />
+        <view class="input-tip">{{expectation.length}}/500</view>
+      </view>
+
+      <view class="form-group">
+        <view class="form-label">
+          <text>您希望找什么样的队友？</text>
+        </view>
+        <textarea 
+          class="form-textarea"
+          placeholder="例如：想找一起准备数学建模比赛的队友，要求有编程基础..."
+          value="{{teamType}}"
+          bindinput="onTeamTypeInput"
+          maxlength="300"
+          auto-height
+        />
+        <view class="input-tip">{{teamType.length}}/300（选填）</view>
+      </view>
+
+      <view class="form-group">
+        <view class="form-label">
+          <text>您的联系方式（可选）</text>
+        </view>
+        <input 
+          class="form-input"
+          placeholder="微信号/QQ/邮箱（方便我们联系您）"
+          value="{{contact}}"
+          bindinput="onContactInput"
+          maxlength="50"
+        />
+      </view>
+
+      <!-- 隐私提示 -->
+      <view class="privacy-tip">
+        <text class="privacy-icon">🔒</text>
+        <text class="privacy-text">您的信息将被严格保密，仅用于产品改进</text>
+      </view>
+
+      <!-- 提交按钮 -->
+      <view class="submit-btn" bindtap="onSubmit">
+        提交反馈
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
